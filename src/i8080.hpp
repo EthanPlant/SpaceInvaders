@@ -13,11 +13,12 @@ class I8080
 {
     public:
         int cycles;
-        int totalCycles = 0;
+        int total_cycles = 0;
+        int last_interrupt;
 
         void load_rom(const char* filename);
         void run_opcode();
-        void generate_interrupt(uint8_t interrupt);
+        void generate_interrupt(uint interrupt);
 
     private:
         uint8_t memory[65536]; // 64 K of memory

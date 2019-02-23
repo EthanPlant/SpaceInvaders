@@ -23,5 +23,11 @@ int main(int argc, char** argv)
     {
         i8080.run_opcode();
         std::this_thread::sleep_for(std::chrono::nanoseconds((1 / CLOCK_SPEED) * 1000000000) * i8080.cycles); // Sleep to slow emulation time
+        if (i8080.total_cycles >= (CLOCK_SPEED / FPS) / 2) 
+        {
+            if (i8080.last_interrupt != 0x0008) i8080.generate_interrupt(0x0008);
+            else i8080.generate_interrupt(0x0010);
+            i8080.total_cycles = 0;
+        }
     }
 }

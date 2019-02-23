@@ -2004,5 +2004,19 @@ void I8080::run_opcode()
             exit(5);
             break;
     }
-    totalCycles += cycles;
+    total_cycles += cycles;
+}
+
+void I8080::generate_interrupt(uint interrupt)
+{
+    // Push PC to the stack
+    memory[sp - 1] = pc >> 8;
+    memory[sp - 2] = pc;
+    sp -= 2;
+
+    // Generate the interrupt
+    pc = (interrupt & 0xFFFF);
+
+    // Save the previous interrupt
+    last_interrupt = interrupt;
 }

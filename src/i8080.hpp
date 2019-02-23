@@ -4,15 +4,20 @@
 #include <iostream>
 
 // Uncomment this if using the cpudiag rom
-//#define CPUDIAG
+// #define CPUDIAG
+
+#define CLOCK_SPEED 2000000
+#define FPS 1/60
 
 class I8080
 {
     public:
-        int cycles = 4;
+        int cycles;
+        int totalCycles = 0;
 
         void load_rom(const char* filename);
         void run_opcode();
+        void generate_interrupt(uint8_t interrupt);
 
     private:
         uint8_t memory[65536]; // 64 K of memory

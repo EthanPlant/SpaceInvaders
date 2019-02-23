@@ -22,6 +22,6 @@ int main(int argc, char** argv)
     while (true)
     {
         i8080.run_opcode();
-        std::this_thread::sleep_for(std::chrono::nanoseconds(500) * i8080.cycles); // Sleep to slow emulation time
+        std::this_thread::sleep_for(std::chrono::nanoseconds((1 / CLOCK_SPEED) * 1000000000) * i8080.cycles); // Sleep to slow emulation time
     }
 }

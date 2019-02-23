@@ -1,4 +1,6 @@
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 #include "i8080.hpp"
 
@@ -20,5 +22,6 @@ int main(int argc, char** argv)
     while (true)
     {
         i8080.run_opcode();
+        std::this_thread::sleep_for(std::chrono::nanoseconds(500) * i8080.cycles); // Sleep to slow emulation time
     }
 }

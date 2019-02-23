@@ -3,9 +3,14 @@
 #include <cstdint>
 #include <iostream>
 
+// Uncomment this if using the cpudiag rom
+//#define CPUDIAG
+
 class I8080
 {
     public:
+        int cycles = 4;
+
         void load_rom(const char* filename);
         void run_opcode();
 

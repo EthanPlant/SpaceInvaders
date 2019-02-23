@@ -46,6 +46,10 @@
 
 # ROMS
 invaders.*
+cpudiag.bin
 
 # Compiled binary
 invaders
+
+# Log file
+log
